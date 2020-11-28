@@ -20,7 +20,7 @@ public class Validar {
     public boolean letras(String cadena){
         
         boolean correcto;
-        pat=Pattern.compile("^[0-9\\d]*$");
+        pat=Pattern.compile("^[0-9]*$");
         
         mat=pat.matcher(cadena);
         

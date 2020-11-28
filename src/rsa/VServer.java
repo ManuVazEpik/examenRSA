@@ -40,10 +40,10 @@ public class VServer extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("RSA Feo de 2 pesos");
+        setResizable(false);
 
         jLabel1.setText("Ventana del Servidor");
 
@@ -60,14 +60,6 @@ public class VServer extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("Mensaje Descifrado:");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -75,33 +67,30 @@ public class VServer extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                            .addComponent(jTextField1))))
-                .addContainerGap(45, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(140, 140, 140)
+                                .addComponent(jButton1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(148, 148, 148)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jLabel2))
+                                    .addComponent(jLabel1))))
+                        .addGap(0, 142, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addGap(23, 23, 23)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap(53, Short.MAX_VALUE))
@@ -109,10 +98,6 @@ public class VServer extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int tammen;
@@ -126,7 +111,7 @@ public class VServer extends javax.swing.JFrame {
             while(true){
                 ServerSocket ss = new ServerSocket(80);
             
-                System.out.println("Servidor escuchando en el puerto: "+ss.getLocalPort());
+                System.out.println("Servidor activo con el puerto: "+ss.getLocalPort());
                 Socket cliente;
                 cliente = ss.accept();
                 
@@ -134,36 +119,42 @@ public class VServer extends javax.swing.JFrame {
                 jTextArea1.setText(todo);
                 System.out.println("Conexión exitosa");
 
-                InputStream aux = cliente.getInputStream();
-                DataInputStream flujo = new DataInputStream(aux);
+                InputStream is = cliente.getInputStream();
+                DataInputStream flujo = new DataInputStream(is);
+                
                 for (int i = 0; i < 4; i++) {
                     BigInteger y=new BigInteger(flujo.readUTF());
                     lista.add(y);
                 }
+                
                 System.out.println(lista);
-                todo=todo+"\np: "+lista.get(0);
-                todo=todo+"\nq: "+lista.get(1);
-                todo=todo+"\nn: "+lista.get(2)+"\n";
-                todo=todo+"mensaje cifrado: ";
+                todo=todo+"\nP Recibida: "+lista.get(0);
+                todo=todo+"\nQ Recibida: "+lista.get(1);
+                todo=todo+"\nn recibida: "+lista.get(2)+"\n";
+                todo=todo+"Mensaje Cifrado: ";
                 tammen=flujo.read();
                 
                 System.out.println(tammen);
-                //System.out.println(flujo.readUTF());
+                
                 BigInteger[] enc;
                 enc = new BigInteger[tammen];
+                
                 for(int i=0;i<tammen;i++){
+                    
                     String x=flujo.readUTF();
                     BigInteger y=new BigInteger(x);
                     todo=todo+y;
                     enc[i]=y;
                     
                 }
-                jTextArea1.setText(todo);
+                
                 Descifrar des=new Descifrar();
                 String mensaje=des.descifrar(lista,enc);
                 
-                System.out.println("Mensaje descifrado:"+mensaje);
-                jTextField1.setText(mensaje);
+                todo += "\n****----****----****";
+                todo += "El mensaje descifrado es: " + mensaje;
+                
+                jTextArea1.setText(todo);
                 ss.close();
                 break;
                 
@@ -219,9 +210,7 @@ public class VServer extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

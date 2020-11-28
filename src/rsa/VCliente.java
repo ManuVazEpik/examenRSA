@@ -37,43 +37,44 @@ public class VCliente extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        msj = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        salida = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
+        cifrar = new javax.swing.JButton();
+        txtPrimo = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RSA Serializado feo");
+        setResizable(false);
 
         jLabel1.setText("Vista del Cliente");
 
         jLabel2.setText("Ingrese el mensaje a cifrar");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        msj.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                msjActionPerformed(evt);
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        salida.setColumns(20);
+        salida.setRows(5);
+        jScrollPane1.setViewportView(salida);
 
         jLabel3.setText("Datos enviados");
 
-        jButton1.setText("Conectarse y cifrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        cifrar.setText("Enviar");
+        cifrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cifrarActionPerformed(evt);
             }
         });
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtPrimo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtPrimoActionPerformed(evt);
             }
         });
 
@@ -92,25 +93,26 @@ public class VCliente extends javax.swing.JFrame {
                             .addComponent(jLabel4))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1)
+                            .addComponent(msj)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton1)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 151, Short.MAX_VALUE))))
+                                .addComponent(txtPrimo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 201, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(190, 190, 190))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(186, 186, 186))))
+                        .addGap(186, 186, 186))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(cifrar)
+                        .addGap(204, 204, 204))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,28 +122,29 @@ public class VCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(msj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPrimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(cifrar)
                 .addGap(23, 23, 23))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void msjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_msjActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_msjActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void cifrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cifrarActionPerformed
+        
         int tamPrimo;
         BigInteger p,q,n;
         BigInteger phi;
@@ -149,38 +152,47 @@ public class VCliente extends javax.swing.JFrame {
         BigInteger[] encriptado;
         String mensaje;
    
-        mensaje=jTextField1.getText();
+        mensaje=msj.getText();
+        String tamPrimoS=txtPrimo.getText();
         
-        String tamPrimoS=jTextField2.getText();
         Validar val = new Validar();
-        boolean ewe=val.letras(mensaje);
+        boolean check= val.letras(mensaje);
         String todo;
-        if (ewe==true && mensaje.length()>0 && mensaje.length()<100 && tamPrimoS.length()<3) {
+        
+        if (check==true && mensaje.length()>0 && mensaje.length()<100 && tamPrimoS.length()<3) {
+            
             try{
-                //192.168.1.92 internal host
+                
                 tamPrimo=Integer.parseInt(tamPrimoS);
-                Socket skCliente = new Socket ("192.168.1.92",80); //Socket "192.168.1.92", 80 "192.168.1.92","0.0.0.0/0.0.0.0",80
+                
+                Socket skCliente = new Socket ("25.9.47.77",5000);
                 System.out.println(skCliente.getLocalAddress()+" " +skCliente.getInetAddress());
                 todo="Dirección del servidor: "+skCliente.getInetAddress();
+                
                 RSA rsa = new RSA(tamPrimo);
+                
                 OutputStream os= skCliente.getOutputStream();
                 DataOutputStream flujo = new DataOutputStream(os);
+                
                 p=rsa.damep();
                 String S=""+p;
-                System.out.println("p: "+S);
+                System.out.println("P calculada: "+S);
+                
                 todo=todo+"\np: "+S;
                 q=rsa.dameq();
                 String qS=""+q;
-                System.out.println("q: "+qS);
+                System.out.println("Q calculada: "+qS);
+                
                 todo=todo+"\nq: "+qS;
                 n=rsa.damen();
                 String nS=""+n;
-                System.out.println("n: "+nS);
+                System.out.println("N calculada: "+nS);
+                
                 todo=todo+"\np: "+nS;
                 flujo.writeUTF(S);
                 flujo.writeUTF(qS);
                 flujo.writeUTF(nS);
-                System.out.println("phi: "+rsa.damephi());
+                System.out.println("Phi calculada: "+rsa.damephi());
                 flujo.writeUTF(""+rsa.damee());
                 
                 encriptado=rsa.encriptar(mensaje);
@@ -189,34 +201,36 @@ public class VCliente extends javax.swing.JFrame {
                 System.out.println(tammen);
 
 
-                System.out.println("e: "+rsa.damee() );
+                System.out.println("e calculada: "+rsa.damee() );
                 todo=todo+"\ne: "+rsa.damee();
-                System.out.println("d: "+rsa.damed());
+                System.out.println("d calculada: "+rsa.damed());
                 todo=todo+"\nmensaje encriptado: ";
+                
                 for (BigInteger encriptado1 : encriptado) {
                     String enc = encriptado1.toString();
                     System.out.println(enc);
                     todo=todo+enc;
                     flujo.writeUTF(enc);
                 }
-                jTextArea1.setText(todo);
+                
+                salida.setText(todo);
                 
                 skCliente.close();
             }catch (IOException es){
-                JOptionPane.showMessageDialog(rootPane, "Inicializa el servidor antes de ingresar tu mensaje");
+                JOptionPane.showMessageDialog(null, "Inicializa el servidor antes de ingresar tu mensaje");
                 
             }
         }else{
-            JOptionPane.showMessageDialog(rootPane,"Ingresa en el mensaje unicamente letras acompañadas de espacios, no mayor a 100 caracteres\nIngresa en el tamaño del primo un numero de entero no mayor igual a 100");
-            System.out.println("Ingresa unicamente letras");
+            JOptionPane.showMessageDialog(rootPane,"Ingresa en el mensaje unicamente numeros, no mayor a 100 caracteres\nIngresa en el tamaño del primo un numero entero no mayor igual a 100");
+            System.out.println("Ingresa unicamente numeros");
         }
         
     
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_cifrarActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtPrimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrimoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtPrimoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,14 +268,14 @@ public class VCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton cifrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField msj;
+    private javax.swing.JTextArea salida;
+    private javax.swing.JTextField txtPrimo;
     // End of variables declaration//GEN-END:variables
 }
